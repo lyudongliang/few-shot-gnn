@@ -1,2 +1,4 @@
 python main.py --exp_name omniglot_N5_S1_v2 --dataset omniglot --test_N_way 5 --train_N_way 5 --train_N_shots 1 --test_N_shots 1 --batch_size 300  --dec_lr=10000  --iterations 10
+python main.py --exp_name omniglot_N5_S1_v2 --dataset omniglot --test_N_way 5 --train_N_way 5 --train_N_shots 1 --test_N_shots 1 --batch_size 300  --dec_lr=100  --iterations 1000
 python main.py --exp_name omniglot_N5_S1_v2 --dataset omniglot --test_N_way 5 --train_N_way 5 --train_N_shots 1 --test_N_shots 1 --dec_lr=100  --iterations 10
+python main.py --exp_name omniglot_N5_S1_v2 --dataset omniglot --test_N_way 5 --train_N_way 5 --train_N_shots 1 --test_N_shots 1 --dec_lr=100  --iterations 1000
