@@ -11,7 +11,7 @@ import models.models as models
 import test
 import numpy as np
 
-# Training settings
+# Training settingsF
 parser = argparse.ArgumentParser(description='Few-Shot Learning with Graph Neural Networks')
 parser.add_argument('--exp_name', type=str, default='debug_vx', metavar='N',
                     help='Name of the experiment')
@@ -69,9 +69,13 @@ def _init_():
         os.makedirs('checkpoints/'+args.exp_name)
     if not os.path.exists('checkpoints/'+args.exp_name+'/'+'models'):
         os.makedirs('checkpoints/'+args.exp_name+'/'+'models')
-    os.system('cp main.py checkpoints'+'/'+args.exp_name+'/'+'main.py.backup')
-    os.system('cp models/models.py checkpoints' + '/' + args.exp_name + '/' + 'models.py.backup')
+    # os.system('cp main.py ./checkpoints'+'/'+args.exp_name+'/'+'main.py.backup')
+    # os.system('cp models/models.py ./checkpoints' + '/' + args.exp_name + '/' + 'models.py.backup')
+    # os.system('copy main.py checkpoints'+'/'+args.exp_name+'/'+'main.py.backup')
+    # os.system('copy models/models.py checkpoints' + '/' + args.exp_name + '/' + 'models.py.backup')
+
 _init_()
+
 
 io = io_utils.IOStream('checkpoints/' + args.exp_name + '/run.log')
 io.cprint(str(args))
@@ -167,7 +171,11 @@ def train():
         # Display
         ####################
         counter += 1
-        total_loss += loss_d_metric.data[0]
+
+        temp_loss = float(loss_d_metric.data) if loss_d_metric.data.size() == torch.Size([]) \
+            else float(loss_d_metric.data[0])
+        total_loss += temp_loss
+        # total_loss += float(loss_d_metric.data[0])
         if batch_idx % args.log_interval == 0:
                 display_str = 'Train Iter: {}'.format(batch_idx)
                 display_str += '\tLoss_d_metric: {:.6f}'.format(total_loss/counter)
