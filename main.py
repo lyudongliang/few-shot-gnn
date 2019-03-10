@@ -33,9 +33,9 @@ parser.add_argument('--seed', type=int, default=1, metavar='S',
                     help='random seed (default: 1)')
 parser.add_argument('--log-interval', type=int, default=20, metavar='N',
                     help='how many batches to wait before logging training status')
-parser.add_argument('--save_interval', type=int, default=1000, metavar='N',
+parser.add_argument('--save_interval', type=int, default=2000, metavar='N',
                     help='how many batches between each model saving')
-parser.add_argument('--test_interval', type=int, default=500, metavar='N',
+parser.add_argument('--test_interval', type=int, default=5000, metavar='N',
                     help='how many batches between each test')
 parser.add_argument('--test_N_way', type=int, default=5, metavar='N',
                     help='Number of classes for doing each classification run')
@@ -186,7 +186,7 @@ def train():
         ####################
         # Test
         ####################
-        if batch_idx % args.test_interval == 0:
+        if batch_idx % args.test_interval == 0 and batch_idx != 0:
             test_samples = 3000
 
             if args.dataset == 'mini_imagenet':
